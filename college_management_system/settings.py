@@ -32,7 +32,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['smswithdjango.herokuapp.com']
 #127.0.0.1
-ALLOWED_HOSTS = ['studentaffairs.herokuapp.com']  # Not recommended but useful in dev mode
+ALLOWED_HOSTS = ['*']  # Not recommended but useful in dev mode
 
 
 # Application definition
@@ -176,3 +176,4 @@ prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
 django_heroku.settings(locals()) 
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
