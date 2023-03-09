@@ -131,7 +131,7 @@ def add_student(request):
                 subject = 'Welcome to our school!'
                 message = f'Hi {first_name},\n\nWelcome to our school! We look forward to having you as a student in {course}.\n\nBest regards,\nThe School Team. \nyou can login to your account use your NPA email and your password is {password}'
                 from_email = 'admin@myschool.com'
-                recipient_list = ['zeyadnaji90@gmail.com']
+                recipient_list = [email]
                 send_mail(subject, message, from_email, recipient_list)
                 return redirect(reverse('add_student'))
             except Exception as e:
