@@ -131,7 +131,7 @@ def add_student(request):
                 subject = 'Welcome to our school!'
                 message = f'Hi {first_name},\n\nWelcome to our school! We look forward to having you as a student in {course}.\n\nBest regards,\nThe School Team. \nyou can login to your account use your NPA email and your password is {password}'
                 from_email = 'admin@myschool.com'
-                recipient_list = [email]
+                recipient_list = ['zeyadnaji90@gmail.com']
                 send_mail(subject, message, from_email, recipient_list)
                 return redirect(reverse('add_student'))
             except Exception as e:
@@ -388,13 +388,13 @@ def process_excel(request):
             email = row[2]
             password = row[3]
             idnumber = row[4]
-            Semester = row[5]
+            sem = row[5]
             # Save the student to the database
             try:
-                course_obj = Semester.objects.get(name=Semester) # retrieve the Course instance with the given name
+                course_obj = Semester.objects.get(name=sem) # retrieve the Course instance with the given name
                 user = CustomUser.objects.create_user(
                     email=email, password=password, user_type=3, first_name=first_name, last_name=last_name,idnumber=idnumber)
-                user.student.course = course_obj # assign the Course instance to the course field
+                user.student.Semester = course_obj # assign the Course instance to the course field
                 user.save()
                 messages.success(request, "Successfully Added")
                 # Send an email to the new student's email address
